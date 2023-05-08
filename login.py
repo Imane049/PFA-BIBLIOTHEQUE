@@ -4,6 +4,8 @@ from tkinter import ttk
 from tkinter import messagebox
 import random
 import string
+import sys
+sys.path.append('.')
 import functions
 import admin
 import client
