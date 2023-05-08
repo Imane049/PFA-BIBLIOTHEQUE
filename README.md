@@ -156,13 +156,13 @@ from ttkthemes import ThemedStyle
 
 root= tk.Tk()
 ```
-Il suffit de créer un objet style et de l'affecter à l'objet fenetre/widget/frame de notre choix pour qu'il s'applique à toutes ses composantes. On choisit ensuite le thème.
+Il suffit de créer un objet style et de l'affecter à l'objet fenetre/widget/frame de notre choix pour qu'il s'applique à toutes ses composantes. On a choisi le thème "breeze" à cause des graphiques harmonieux et simples qu'il offre
 ```
 style = ThemedStyle(home)
 style.set_theme("breeze")
 
 ```
-Attebtion cependant à utiliser des objets ttk et non tk puisque ces derniers ne sont pas supportés par le module ThemedStyle
+Attention cependant à utiliser des objets ttk et non tk puisque ces derniers ne sont pas supportés par le module ThemedStyle
 ```
 label = ttk.Label(root, text="This is a mabel ") #not tk.Label(...
 label.pack()
