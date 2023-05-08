@@ -10,8 +10,8 @@ C'est pourquoi, pour le projet de gestion de bibliothèque, nous avons choisi d'
 
 ## Sommaire :
 - Partie Conception
-- Installation
-- Fonctionalités et utilisation
+- Fonctionalités 
+- Installation et utilisation
 - Contributeurs
 
 ## Partie Conception
