@@ -22,13 +22,24 @@ L'application de gestion de bibliothèque comporte les fonctionnalités suivante
 
 ### Authentfication et enregistrement:
 - S'authetifier : Se connecter à son compte à travers ses identifiants uniques
-![login](login.png)
+![login](login.PNG) 
 - Créer un compte : Les adhérents de la bibliothèque peuvent se créer des comptes
-- Personaliser ses informations : 
+![sigunp](signup.PNG)
+- Le nom d'utilisateur et le mot de passe se chaque adhérent sont générés de façon automatique. Une fiche apparait après l'enregistrement pour que l'adgérent puisse noter ses identifiants. Il a aussi la possibilité de les modifier ou de supprimer son compte
+![infos](infossignup.PNG)
+ 
 ### Vue administrateur :
 
 - Gérer les livres : Ajouter, supprimer, modifier, rechercher et parcourir les livres de la bibliothèque
+ + 
 - Gérer les adhérents : Ajouter, supprimer, modifier et parcourir les informations des adhérents
+ + Ajouter des adhérents :
+ ![ajout_client](addclient.PNG)
+ +Parcourir les adhérents :
+ ![parcourir_client](browseclient.PNG)
+ +Chercher des clients particuliers:
+     Exemple: recherche clients avec "user" dans leur nom
+     ![chercher_client](searchclient.PNG)
 Gérer les emprunts : Enregistrer un nouvel emprunt, retourner un livre emprunté
 
 ### Vue adhérent :
