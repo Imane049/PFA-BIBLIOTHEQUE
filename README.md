@@ -20,9 +20,13 @@ C'est pourquoi, pour le projet de gestion de bibliothèque, nous avons choisi d'
 ## Fonctionalités et usage :
 L'application de gestion de bibliothèque comporte les fonctionnalités suivantes :
 
+### Authentfication et enregistrement:
+- S'authetifier : Se connecter à son compte à travers ses identifiants uniques
+- Créer un compte : Les adhérents de la bibliothèque peuvent se créer des comptes
+- Personaliser ses informations : 
 ### Vue administrateur :
 
-- Gérer les livres : Ajouter, supprimer, modifier et parcourir les livres de la bibliothèque
+- Gérer les livres : Ajouter, supprimer, modifier, rechercher et parcourir les livres de la bibliothèque
 - Gérer les adhérents : Ajouter, supprimer, modifier et parcourir les informations des adhérents
 Gérer les emprunts : Enregistrer un nouvel emprunt, retourner un livre emprunté
 
