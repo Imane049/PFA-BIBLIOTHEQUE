@@ -15,8 +15,75 @@ C'est pourquoi, pour le projet de gestion de bibliothèque, nous avons choisi d'
 - Contributeurs
 
 # Partie Conception
+Le MCD est donné par:
+![mcd](MCD.PNG)
+
+d'où le MLDR suivant:
+```
+Bibliothecaire(ID_BIBLIOTHECAIRE, username, password)
+CLIENT(ID_CLIENT, PERSONAL_NAME, FAMILY_NAME, USERNAME, PASSWORD, AGE, ADRESS, EMAIL, PHONE)
+BOOK(ID_BOOK, TITLE, AUTHOR, ISBN, GENRE; ANNEE, LANGUE, CONTEMLATION_SUR_PLACE)
+RENTAL(ID_BOOK, ID_CLIENT, DATE_EMPRUNT)
+RESERVATION(ID_BOOK, ID_CLIENT)
+```
+d'où la base de données donnée par:
+```
+conn=sqlite3.connect("bibliotheque.db")
+print("database connected successfully")
 
 
+##creation des tables admin et client
+conn.execute("""CREATE TABLE IF NOT EXISTS BIBLIOTHECAIRE(BIBLIOTHECAIRE_ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+USERNAME TEXT NOT NULL,
+PASSWORD TEXT NOT NULL)""")
+#La bibliotheque a un seul admin
+conn.execute("""CREATE TRIGGER IF NOT EXISTS enforce_single_row
+BEFORE INSERT ON BIBLIOTHECAIRE
+BEGIN
+  SELECT
+    CASE
+      WHEN (SELECT COUNT(*) FROM BIBLIOTHECAIRE) >= 1 THEN
+        RAISE(ABORT, 'Only one row is allowed in this table')
+    END;
+END;
+""")
+conn.execute("""INSERT INTO BIBLIOTHECAIRE(username, password)
+SELECT ? , ?
+WHERE NOT EXISTS (SELECT 1 FROM BIBLIOTHECAIRE)""", ("admin", "pwd"))
+print("table bibliothecaire connected successfully")
+#conn.execute("""INSERT INTO BIBLIOTHECAIRE(USERNAME, PASSWORD) VALUES("admin","pwd")""")
+conn.execute("""
+    CREATE TABLE IF NOT EXISTS CLIENT (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        PERSONAL_NAME TEXT NOT NULL,
+        FAMILY_NAME TEXT NOT NULL,
+        PASSWORD TEXT NOT NULL,
+        AGE INTEGER,
+        ADDRESS TEXT,
+        PHONE INTEGER NOT NULL,
+        EMAIL TEXT NOT NULL,
+        USERNAME TEXT
+    )
+""")
+
+
+
+conn.execute("""CREATE TABLE IF NOT EXISTS BOOKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT NOT NULL, AUTHOR TEXT NOT NULL, GENRE TEXT, LANGUAGE TEXT, year INTEGER , CONTEMPLATION_SUR_PLACE INTEGER CHECK (CONTEMPLATION_SUR_PLACE IN (0,1)), ISBN INTEGER NOT NULL, IMAGE BLOB)""")
+
+conn.execute("""CREATE TABLE IF NOT EXISTS rentals (BOOK_ID INT NOT NULL, CLIENT_ID INT, DATE_EMPRUNT DATE, FOREIGN KEY (BOOK_ID) references BOOKS(ID), FOREIGN KEY (CLIENT_ID) REFERENCES CLIENT(ID))""")
+
+conn.execute("""CREATE TABLE IF NOT EXISTS reservations (BOOK_ID INT NOT NULL, CLIENT_ID INT, DATE_EMPRUNT DATE, FOREIGN KEY (BOOK_ID) references BOOKS(ID), FOREIGN KEY (CLIENT_ID) REFERENCES CLIENT(ID))""")
+
+conn.commit()
+
+delai_emprunt = 15
+delai_reservation = 7
+
+```
++ La bibliothèque n'a qu'un seul admin d'où l'utilisation du trigger. Les identifiants par défaut de l'admin sont __(username=admin, password=pwd)__ mais qu'il peut changer à tout moment
++ Le username de chaque utilisateur est généré automatiquement à travers la concaténation de son nom personel et de son id et son mot de passe est géneré automatiquement et aléatoirement, garantissant ainsi l'unicité des identifiants de connection de chaque utilisateurs et ainsi la confidentialité de leur comptes
++ Chaque livre emprunté doit etre retourné dans un délai de 15 par defaut et chaque reservation est annulée si le livre n'est pas récupéré dans un délai de 7 jours par défaut (les deux délais étant modifiables par l'admin)
++ 
 # Fonctionalités:
 L'application gestion de bibliothèque offre plusieurs fonctionalités conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents à travers une interface simple et .
 
