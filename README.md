@@ -80,8 +80,8 @@ L'application gestion de bibliothèque offre plusieurs fonctionalités conçues 
  - Modifier les informations relatives à son compte, se déconnecter ou supprimer son compte
   ![manageaccount](account.PNG)
 
-* L'application de gestion de bibliothèque est conçue pour offrir une expérience utilisateur facile et intuitive, avec une interface utilisateur claire et conviviale. 
-Cette interface a été réalisée à travers le module ThemedStyle de ttkthemes qui permet d'appliquer des thèmes préconcus et personalisables à notre application de façon simple
+* Toutes ces fonctionalités sont offertes à l'utilisateur à travers une expérience facile et intuitive, avec une interface utilisateur claire et conviviale, 
+ réalisée via le module ThemedStyle de ttkthemes qui permet d'appliquer des thèmes préconcus et personalisables à notre application de façon simple
 ```
 import tkinter as tk
 from tkinter import ttk
