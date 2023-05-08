@@ -180,5 +180,5 @@ button.pack()
 Cette application a été réalisé dans le cadre du P.F.A. du groupe 5 3 I.I.R. de l'EMSI MARRAKECH, sous la supervisition de Mr. Ayoub CHAREF
  + Imane BARAKATE
  + Oussama MARIR
- + LAFROUGUI Zouhair
+ + Zouhair LAFROUGUI
  
