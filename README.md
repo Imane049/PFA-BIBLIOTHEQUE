@@ -11,15 +11,15 @@ C'est pourquoi, pour le projet de gestion de bibliothèque, nous avons choisi d'
 ## Sommaire :
 - Partie Conception
 - Installation
-- Fonctionalités et usage
+- Fonctionalités et utilisation
 - Contributeurs
-- Contact
 
 ## Partie Conception
 
-## Fonctionalités et usage :
-L'application de gestion de bibliothèque comporte les fonctionnalités suivantes :
+## Fonctionalités et utilisation :
+L'application de gestion de bibliothèque offre les fonctionnalités suivantes :
 
+# Fonctionalités: 
 ### Authentfication et enregistrement:
 - S'authetifier : Se connecter à son compte à travers ses identifiants uniques
 ![login](login.PNG) 
@@ -82,6 +82,6 @@ L'application de gestion de bibliothèque comporte les fonctionnalités suivante
 
 L'application de gestion de bibliothèque est conçue pour offrir une expérience utilisateur facile et intuitive, avec une interface utilisateur claire et conviviale. Les fonctionnalités sont conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents.
 
-
-
+## Utilisation : 
+ Pour utiliser l'application, veuillez mettre les fichiers .py contenus dans ce repository dans le meme emplacement et excecuter le fichier "login.py"
 
