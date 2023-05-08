@@ -59,12 +59,26 @@ L'application de gestion de bibliothèque comporte les fonctionnalités suivante
   ![addrental](addrental.PNG)
   +  Retourner un livre emprunté à partir des memes ids
   ![registerreturn](return.PNG)
+  
+ * Modifier son identifiant et mot de passe et se déconnecter
+  ![accountadmin](accountadmin.PNG)
 
 ### Vue adhérent :
 
-- Parcourir les livres disponibles : Rechercher un livre par titre, auteur, année, etc.
-- Réserver un livre : Vérifier la disponibilité d'un livre et le réserver en ligne
-- Consulter l'état de ses emprunts : Voir les livres empruntés et vérifier si on est en retard ou pas
+- Parcourir les livres disponibles : 
+   + Parcourir les livres de la bibliothèque et voir s'ils sont à emprunter ou à consulter sur place
+   ![browsebooks](browsebooks.PNG)
+   + Rechercher un livre par titre, auteur, année, etc...
+   ![searchbooks](searchbooks.PNG)
+   +Selectionner un livre en particulier pour voir ses informations et éventuellement le réserver s'il n'est pas déja reservé
+   ![selectionbook](infosbook.PNG)
+
+- Consulter l'état de ses emprunts : 
+   Voir les livres empruntés par soi et vérifier si on est en retard ou pas
+   ![browserental](reservationbrowse.PNG)
+ 
+ - Modifier les informations relatives à son compte, se déconnecter ou supprimer son compte
+  ![manageaccount](account.PNG)
 
 L'application de gestion de bibliothèque est conçue pour offrir une expérience utilisateur facile et intuitive, avec une interface utilisateur claire et conviviale. Les fonctionnalités sont conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents.
 
