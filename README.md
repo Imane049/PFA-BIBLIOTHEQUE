@@ -31,7 +31,16 @@ L'application de gestion de bibliothèque comporte les fonctionnalités suivante
 ### Vue administrateur :
 
 - Gérer les livres : Ajouter, supprimer, modifier, rechercher et parcourir les livres de la bibliothèque
- + 
+ + Ajouter un livre:
+ ![ajout_livre](addbook.PNG)
+ +Parcourir les livres de la bibliothèque:
+ ![parcourir_livres](browsebook.PNG)
+ +Rechercher un livre en particulier. En plus de la fonction de recherche basique, il est possible d'afficher plus d'options de recherche(par auteur, année, etc...) en appyuant sur le bouton "more options"
+    Exemple: recherche livre avec nom d'auteur "author2"
+    ![searchbook](searchbook.PNG)
+ +Selectionner un livre afin d'afficher toutes les informations le concernant, les modifier ou supprimer le livre:
+ ![selectionner_livre](selectionbook.PNG)
+ 
 - Gérer les adhérents : Ajouter, supprimer, modifier et parcourir les informations des adhérents
  + Ajouter des adhérents :
  ![ajout_client](addclient.PNG)
@@ -40,6 +49,8 @@ L'application de gestion de bibliothèque comporte les fonctionnalités suivante
  +Chercher des clients particuliers:
      Exemple: recherche clients avec "user" dans leur nom
      ![chercher_client](searchclient.PNG)
+  +Selectionner un client particulier afin d'afficher toutes ses informations (les identifiant et mots de passe ne sont pas affichés sinon pour des raisons de confidentialité), les modifier ou supprimer son compte
+  ![selection_client](selectionclient.PNG)
 Gérer les emprunts : Enregistrer un nouvel emprunt, retourner un livre emprunté
 
 ### Vue adhérent :
