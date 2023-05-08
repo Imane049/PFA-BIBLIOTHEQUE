@@ -5,6 +5,8 @@ from tkinter import messagebox
 from tkinter import filedialog
 import random
 import string
+import sys
+sys.path.append('.')
 import admin
 import login
 import qsqds
