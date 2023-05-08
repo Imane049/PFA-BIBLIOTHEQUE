@@ -1,4 +1,4 @@
-# PFA-BIBLIOTHEQUE
+# APPLICATION GESTION DE BIBLIOTHEQUE
 Le projet consiste en une application de gestion de bibliothèque comprenant deux vues: une vue administrateur et une vue adhérent. La vue administrateur permet de gérer les réservations, les emprunts, les livres et les adhérents. La vue adhérent permet de parcourir les livres, de les réserver et de voir l'état de ses emprunts. L'interface graphique de l'application est réalisée en utilisant la bibliothèque Tkinter de Python, tandis que la base de données est gérée par SQLite.
 
 ### Tkinter et SQLite, pourquoi? 
