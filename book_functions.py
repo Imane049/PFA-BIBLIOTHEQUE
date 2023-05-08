@@ -5,6 +5,8 @@ from tkinter import filedialog
 from PIL import ImageTk, Image
 import random
 import string
+import sys
+sys.path.append('.')
 import admin
 import login
 import qsqds
