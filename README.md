@@ -14,12 +14,12 @@ C'est pourquoi, pour le projet de gestion de bibliothèque, nous avons choisi d'
 - Installation et utilisation
 - Contributeurs
 
-## Partie Conception
+# Partie Conception
 
-## Fonctionalités et utilisation :
-L'application de gestion de bibliothèque offre les fonctionnalités suivantes :
 
-# Fonctionalités: 
+# Fonctionalités:
+L'application gestion de bibliothèque offre plusieurs fonctionalités conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents à travers une interface simple et .
+
 ### Authentfication et enregistrement:
 - S'authetifier : Se connecter à son compte à travers ses identifiants uniques
 ![login](login.PNG) 
@@ -80,8 +80,32 @@ L'application de gestion de bibliothèque offre les fonctionnalités suivantes :
  - Modifier les informations relatives à son compte, se déconnecter ou supprimer son compte
   ![manageaccount](account.PNG)
 
-L'application de gestion de bibliothèque est conçue pour offrir une expérience utilisateur facile et intuitive, avec une interface utilisateur claire et conviviale. Les fonctionnalités sont conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents.
+* L'application de gestion de bibliothèque est conçue pour offrir une expérience utilisateur facile et intuitive, avec une interface utilisateur claire et conviviale. 
+Cette interface a été réalisée à travers le module ThemedStyle de ttkthemes qui permet d'appliquer des thèmes préconcus et personalisables à notre application de façon simple
+```
+import tkinter as tk
+from tkinter import ttk
+from ttkthemes import ThemedStyle
 
+root= tk.Tk()
+```
+Il suffit de créer un objet style et de l'affecter à l'objet fenetre/widget/frame de notre choix pour qu'il s'applique à toutes ses composantes. On choisit ensuite le thème.
+```
+style = ThemedStyle(home)
+style.set_theme("breeze")
+
+```
+Attebtion cependant à utiliser des objets ttk et non tk puisque ces derniers ne sont pas supportés par le module ThemedStyle
+```
+label = ttk.Label(root, text="This is a mabel ") #not tk.Label(...
+label.pack()
+
+entry =ttk.Entry(root)
+entry.pack()
+
+button = ttk.Button(root, text="This is a button")
+button.pack()
+```
 ## Utilisation : 
  Pour utiliser l'application, veuillez mettre les fichiers .py contenus dans ce repository dans le meme emplacement et excecuter le fichier "login.py"
 
