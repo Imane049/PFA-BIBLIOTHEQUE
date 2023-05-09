@@ -82,7 +82,13 @@ delai_reservation = 7
 ```
 + La bibliothèque n'a qu'un seul admin d'où l'utilisation du trigger. Les identifiants par défaut de l'admin sont __(username=admin, password=pwd)__ mais qu'il peut changer à tout moment
 + Le username de chaque utilisateur est généré automatiquement à travers la concaténation de son nom personel et de son id et son mot de passe est géneré automatiquement et aléatoirement, garantissant ainsi l'unicité des identifiants de connection de chaque utilisateurs et ainsi la confidentialité de leur comptes
-+ Chaque livre emprunté doit etre retourné dans un délai de 15 par defaut et chaque reservation est annulée si le livre n'est pas récupéré dans un délai de 7 jours par défaut (les deux délais étant modifiables par l'admin)
++ Chaque livre emprunté doit etre retourné dans un délai de 15 par defaut et chaque reservation est annulée si le livre n'est pas récupéré dans un délai de 7 jours :
+```
+conn.execute(" DELETE FROM reservations WHERE date( DATE_EMPRUNT + ? ) < date('now')", (delai_reservation,))
+
+```
+  * les deux délais sontmodifiables par l'admin
+![settings_change](settings.PNG)
 + 
 # Fonctionalités:
 L'application gestion de bibliothèque offre plusieurs fonctionalités conçues pour répondre aux besoins à la fois des administrateurs de bibliothèques et des adhérents à travers une interface simple et .
@@ -127,6 +133,8 @@ L'application gestion de bibliothèque offre plusieurs fonctionalités conçues 
   +  Retourner un livre emprunté à partir des memes ids
   ![registerreturn](return.PNG)
   
+ * Accéder aux statistiques de la bibliothèque:
+ ![statistiques](statistiques.PNG)
  * Modifier son identifiant et mot de passe et se déconnecter
   ![accountadmin](accountadmin.PNG)
 
@@ -137,13 +145,15 @@ L'application gestion de bibliothèque offre plusieurs fonctionalités conçues 
    ![browsebooks](browsebooks.PNG)
    + Rechercher un livre par titre, auteur, année, etc...
    ![searchbooks](searchbooks.PNG)
-   +Selectionner un livre en particulier pour voir ses informations et éventuellement le réserver s'il n'est pas déja reservé
+   + Selectionner un livre en particulier pour voir ses informations et éventuellement le réserver s'il n'est pas déja reservé
    ![selectionbook](infosbook.PNG)
 
 - Consulter l'état de ses emprunts : 
-   Voir les livres empruntés par soi et vérifier si on est en retard ou pas
+   + Voir les livres empruntés par soi et vérifier si on est en retard ou pas
    ![browserental](reservationbrowse.PNG)
- 
+   + Etre alerté de ses retards le cas échéant dés qu'on est connecté
+   ![alerteretard](alerteretard.PNG)
+   
  - Modifier les informations relatives à son compte, se déconnecter ou supprimer son compte
   ![manageaccount](account.PNG)
 
