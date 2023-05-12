@@ -8,8 +8,7 @@ from PIL import ImageTk, Image
 import random
 import string
 import sys
-sys.path.append('.')
-
+sys.path.append(r"C:\Users\Imane\Desktop\Nouveau dossier (3)")
 import admin
 import login
 import qsqds
@@ -32,7 +31,7 @@ def addrental(RentalTree, client_entry,book_entry):
     book_to_rent=cursor.fetchone()
 
     if client_exist and book_exist and book_to_rent:
-        cursor.execute("INSERT INTO rentalS(BOOK_ID, CLIENT_ID, DATE_EMPRUNT) VALUES (?, ?, date('now'))", (book, client))
+        cursor.execute("INSERT INTO rentals(BOOK_ID, CLIENT_ID, DATE_EMPRUNT) VALUES (?, ?, date('now'))", (book, client))
         conn.commit()
 
         messagebox.showinfo("Info", "Book added successfully!")
@@ -58,7 +57,7 @@ def searchRental(searchrental_entry, RentalTree):
 
     cursor = conn.cursor()
 
-    cursor.execute("SELECT rentalS.*, CLIENT.PERSONAL_NAME || ' ' || CLIENT.FAMILY_NAME, BOOKS.TITLE, rentalS.DATE_EMPRUNT, date(rentalS.DATE_EMPRUNT, '+{} days') < date('now') FROM (rentalS JOIN BOOKS ON rentalS.BOOK_ID=BOOKS.ID) JOIN CLIENT ON rentalS.CLIENT_ID=CLIENT.ID WHERE BOOK_ID LIKE ? OR CLIENT_ID LIKE ? OR CLIENT.PERSONAL_NAME LIKE ? OR CLIENT.FAMILY_NAME LIKE ? OR BOOKS.TITLE LIKE ? OR BOOKS.ISBN LIKE ? OR BOOKS.AUTHOR LIKE ? OR BOOKS.ISBN LIKE ? OR BOOKS.GENRE LIKE ? OR BOOKS.LANGUAGE LIKE ? OR BOOKS.year LIKE ? OR BOOKS.ISBN LIKE ?".format(delai_emprunt), ('%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%'))
+    cursor.execute("SELECT rentals.*, CLIENT.PERSONAL_NAME || ' ' || CLIENT.FAMILY_NAME, BOOKS.TITLE, rentals.DATE_EMPRUNT, date(rentals.DATE_EMPRUNT, '+{} days') < date('now') FROM (rentals JOIN BOOKS ON rentals.BOOK_ID=BOOKS.ID) JOIN CLIENT ON rentals.CLIENT_ID=CLIENT.ID WHERE BOOK_ID LIKE ? OR CLIENT_ID LIKE ? OR CLIENT.PERSONAL_NAME LIKE ? OR CLIENT.FAMILY_NAME LIKE ? OR BOOKS.TITLE LIKE ? OR BOOKS.ISBN LIKE ? OR BOOKS.AUTHOR LIKE ? OR BOOKS.ISBN LIKE ? OR BOOKS.GENRE LIKE ? OR BOOKS.LANGUAGE LIKE ? OR BOOKS.year LIKE ? OR BOOKS.ISBN LIKE ?".format(delai_emprunt), ('%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%', '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%' , '%'+search_query+'%'))
 
     rentals = cursor.fetchall()
     for rental in rentals:
@@ -69,7 +68,7 @@ def Return(client_entry,book_entry):
     book_entry=book_entry.get()
     try:
         cursor=conn.cursor()
-        cursor.execute("DELETE FROM rentalS where CLIENT_ID=? and book_id=?",(client_entry, book_entry))
+        cursor.execute("DELETE FROM rentals where CLIENT_ID=? and book_id=?",(client_entry, book_entry))
         messagebox.showinfo("info", "retour enregistré")
     except Exception as e:
         messagebox.showinfo("alert", "erreur, retour innefectué")

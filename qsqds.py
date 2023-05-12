@@ -6,7 +6,7 @@ from tkinter import filedialog
 import random
 import string
 import sys
-sys.path.append('.')
+sys.path.append(r"C:\Users\Imane\Desktop\Nouveau dossier (3)")
 import admin
 import login
 import qsqds

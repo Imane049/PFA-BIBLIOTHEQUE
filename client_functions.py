@@ -4,11 +4,10 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
 from PIL import ImageTk, Image
-
+import sys
+sys.path.append(r"C:\Users\Imane\Desktop\Nouveau dossier (3)")
 import random
 import string
-import sys
-sys.path.append('.')
 import admin
 import login
 import qsqds
@@ -50,7 +49,7 @@ def searchClient(search_entry, ClientTree):
     clients = cursor.fetchall()
 
     for client in clients:
-        ClientTree.insert("", "end", text=client[0], values=(client[2]+client[1], client[4], client[5],client[6], client[7]))
+        ClientTree.insert("", "end", text="", values=(client[0],client[2]+client[1], client[4], client[5],client[6], client[7]))
 
 ##def showclientinfo function
 def showClientInfo(ClientTree):

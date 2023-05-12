@@ -6,7 +6,7 @@ from PIL import ImageTk, Image
 import random
 import string
 import sys
-sys.path.append('.')
+sys.path.append(r"C:\Users\Imane\Desktop\Nouveau dossier (3)")
 import admin
 import login
 import qsqds
@@ -32,7 +32,7 @@ def addrental(RentalTree, client_entry,book_entry):
     book_to_rent=cursor.fetchone()
 
     if client_exist and book_exist and book_to_rent:
-        cursor.execute("INSERT INTO rentalS(BOOK_ID, CLIENT_ID, DATE_EMPRUNT) VALUES (?, ?, date('now'))", (book, client))
+        cursor.execute("INSERT INTO rentals(BOOK_ID, CLIENT_ID, DATE_EMPRUNT) VALUES (?, ?, date('now'))", (book, client))
         conn.commit()
 
         messagebox.showinfo("Info", "Book added successfully!")

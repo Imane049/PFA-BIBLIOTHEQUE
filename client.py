@@ -5,7 +5,7 @@ from tkinter import messagebox
 import random
 import string
 import sys
-sys.path.append('.')
+sys.path.append(r"C:\Users\Imane\Desktop\Nouveau dossier (3)")
 import functions
 import admin
 import qsqds
@@ -31,11 +31,11 @@ def client_root():
     tabControl=ttk.Notebook(root_client)
 
     BrowseBooks_tab=ttk.Frame(tabControl)
-    browseRentals_tab=ttk.Frame(tabControl)
+    browserentals_tab=ttk.Frame(tabControl)
     ManageAccount_tab=ttk.Frame(tabControl)
 
     tabControl.add(BrowseBooks_tab, text="Browse Books")
-    tabControl.add(browseRentals_tab, text="Manage reservations")
+    tabControl.add(browserentals_tab, text="Manage reservations")
     tabControl.add(ManageAccount_tab, text="Manage account")
 
     tabControl.pack(expand=1, fill="both")
@@ -132,14 +132,14 @@ def client_root():
 
 
 
-##SET BROWSE REntals TAB
-    search_label = ttk.Label(browseRentals_tab, text="Search:")
+##SET BROWSE rentals TAB
+    search_label = ttk.Label(browserentals_tab, text="Search:")
     search_label.pack(side="top",fill="x", padx=5, pady=5)
 
-    searchrental_entry = ttk.Entry(browseRentals_tab)
+    searchrental_entry = ttk.Entry(browserentals_tab)
     searchrental_entry.pack(side="top", fill="x")
 
-    RentalTree = ttk.Treeview(browseRentals_tab, columns=('ID Livre','ISBN Livre', 'Titre Livre', "Date D'emprunt", 'Durée de l\'emprunt', 'Retard', 'Livre résérvé'))
+    RentalTree = ttk.Treeview(browserentals_tab, columns=('ID Livre','ISBN Livre', 'Titre Livre', "Date D'emprunt", 'Durée de l\'emprunt', 'Retard', 'Livre résérvé'))
 
 
     RentalTree.heading('ID Livre', text='ID Livre')
@@ -149,19 +149,19 @@ def client_root():
     RentalTree.heading( 'Retard',   text='Retard')
     RentalTree.heading( 'Livre résérvé',   text='Livre résérvé')
 
-    scrollbar = ttk.Scrollbar(browseRentals_tab, orient='horizontal', command=RentalTree.xview)
+    scrollbar = ttk.Scrollbar(browserentals_tab, orient='horizontal', command=RentalTree.xview)
     scrollbar.pack(side='bottom', fill='x')
 
     RentalTree.configure(xscrollcommand=scrollbar.set)
 
 
-    scrollbary = ttk.Scrollbar(browseRentals_tab, orient='vertical', command=RentalTree.yview)
+    scrollbary = ttk.Scrollbar(browserentals_tab, orient='vertical', command=RentalTree.yview)
     scrollbar.pack(side='left', fill='y')
 
     RentalTree.configure(yscrollcommand=scrollbary.set)
 
     cursor = conn.cursor()
-    cursor.execute("SELECT rentalS.*, BOOKS.ISBN, BOOKS.TITLE, rentalS.DATE_EMPRUNT,  date(rentalS.DATE_EMPRUNT, '+{} days') < date('now') FROM rentalS JOIN BOOKS ON rentalS.BOOK_ID=BOOKS.ID where rentalS.CLIENT_ID= ?".format(delai_emprunt),(session[0],))
+    cursor.execute("SELECT rentals.*, BOOKS.ISBN, BOOKS.TITLE, rentals.DATE_EMPRUNT,  date(rentals.DATE_EMPRUNT, '+{} days') < date('now') FROM rentals JOIN BOOKS ON rentals.BOOK_ID=BOOKS.ID where rentals.CLIENT_ID= ?".format(delai_emprunt),(session[0],))
 
     rentals = cursor.fetchall()
     for rental in rentals:
@@ -230,7 +230,7 @@ def client_root():
     root_client.mainloop()
 
     cursor = conn.cursor()
-    cursor.execute("SELECT rentalS.*, BOOKS.TITLE, rentalS.DATE_EMPRUNT, date(rentalS.DATE_EMPRUNT, '+{} days') < date('now') FROM (rentalS JOIN BOOKS ON rentalS.BOOK_ID=BOOKS.ID) JOIN CLIENT ON rentalS.CLIENT_ID=CLIENT.ID WHERE CLIENT_ID = ? ".format(delai_emprunt), (session[0],))
+    cursor.execute("SELECT rentals.*, BOOKS.TITLE, rentals.DATE_EMPRUNT, date(rentals.DATE_EMPRUNT, '+{} days') < date('now') FROM (rentals JOIN BOOKS ON rentals.BOOK_ID=BOOKS.ID) JOIN CLIENT ON rentals.CLIENT_ID=CLIENT.ID WHERE CLIENT_ID = ? ".format(delai_emprunt), (session[0],))
     result = cursor.fetchone()
     if result and result[4] == 1:
         messagebox.showinfo("RETARD", "Vous avez un retard de retour à la librairie concernant le livre {}. \nNous vous prions de bien vouloir les retourner dès que possible afin d'éviter toute pénalité.".format(result[3]))
